@@ -1,84 +1,152 @@
-# \# EmoSort AI – Emotion Classification System
+# EmoSort-AI 😄😡😐😢
 
-# 
+An end-to-end **Emotion Classification System** using a **Convolutional Neural Network (CNN)** that detects human emotions from facial images. This project covers the complete ML lifecycle — **data preprocessing, model training, evaluation, and inference (prediction)**.
 
-# \## Problem Statement
+---
 
-# Manual classification of facial emotions in images is time-consuming and error-prone.
+## 🚀 Project Overview
 
-# This project aims to automate emotion detection and organize images based on predicted emotions.
+EmoSort-AI is designed to classify facial emotions into four categories:
 
-# 
+* **Angry** 😠
+* **Happy** 😄
+* **Neutral** 😐
+* **Sad** 😢
 
-# \## Solution
+The system is implemented using **TensorFlow/Keras** and follows a clean, modular structure suitable for real-world ML projects and interviews.
 
-# A Convolutional Neural Network (CNN) is trained on facial expression images to classify emotions.
+---
 
-# The predicted label is used to automatically sort images into emotion-specific categories.
+## 🧠 Model Architecture
 
-# 
+The CNN architecture includes:
 
-# \## Dataset
+* Convolution + ReLU layers
+* MaxPooling layers
+* Flatten layer
+* Fully connected Dense layers
+* Softmax output layer (4 classes)
 
-# \- FER-2013 facial emotion dataset
+**Input:** 48×48 grayscale facial images
+**Output:** Emotion class probabilities
 
-# \- 7 emotion classes
+---
 
-# \- Grayscale images (48x48)
+## 📂 Project Structure
 
-# 
+```
+EmoSort-AI/
+│
+├── data/
+│   ├── Angry/
+│   ├── Happy/
+│   ├── Neutral/
+│   └── Sad/
+│
+├── src/
+│   ├── preprocess.py   # Data loading & preprocessing
+│   ├── model.py        # CNN model definition
+│   ├── train.py        # Training pipeline
+│   └── predict.py      # Inference / prediction script
+│
+├── notebooks/
+│   └── training.ipynb  # Experimentation notebook
+│
+├── emosort_model.h5    # Trained model
+├── requirements.txt   # Dependencies
+└── README.md
+```
 
-# \## Tech Stack
+---
 
-# \- Python
+## ⚙️ Setup Instructions
 
-# \- TensorFlow / Keras
+### 1️⃣ Clone the repository
 
-# \- NumPy, OpenCV
+```bash
+git clone https://github.com/joyboy2001/EmoSort-AI.git
+cd EmoSort-AI
+```
 
-# \- Scikit-learn
+### 2️⃣ Install dependencies
 
-# \- Matplotlib
+```bash
+pip install -r requirements.txt
+```
 
-# 
+> **Python version:** 3.10+ recommended
 
-# \## Model Overview
+---
 
-# \- CNN with convolutional and pooling layers
+## 🏋️ Training the Model
 
-# \- ReLU activation, Softmax output
+Run the training pipeline:
 
-# \- Adam optimizer with categorical crossentropy loss
+```bash
+python src/train.py
+```
 
-# 
+This will:
 
-# \## Results
+* Load images from `data/`
+* Preprocess & normalize them
+* Train the CNN
+* Save the trained model as `emosort_model.h5`
 
-# \- Achieved approximately 63–68% validation accuracy
+---
 
-# \- Model evaluated using accuracy curves and confusion matrix
+## 🔮 Running Predictions (Inference)
 
-# 
+Use the trained model to predict emotion from a new image:
 
-# \## How to Run
+```bash
+python src/predict.py data/Happy/HAPPY.png
+```
 
-# 1\. Install dependencies  
+### ✅ Sample Output
 
-# &nbsp;  `pip install -r requirements.txt`
+```
+Loading model...
+Predicted emotion: Happy
+```
 
-# 2\. Run training notebook  
+---
 
-# &nbsp;  `notebooks/training.ipynb`
+## 📊 Results
 
-# 
+* Successfully trained CNN model
+* End-to-end pipeline from raw images → prediction
+* Modular, reusable codebase
 
-# \## Future Improvements
+> Note: Accuracy can be improved further using data augmentation and larger datasets.
 
-# \- Hyperparameter tuning
+---
 
-# \- Transfer learning
+## 🧩 Key ML Concepts Demonstrated
 
-# \- Real-time emotion detection
+* Image preprocessing
+* CNN architecture design
+* Model training & evaluation
+* Saving/loading trained models
+* Real-world inference pipeline
 
+---
 
+## 👨‍💻 Author
 
+**Sudeep J**
+Final Year CSE (AI & ML)
+GitHub: [https://github.com/joyboy2001](https://github.com/joyboy2001)
+
+---
+
+## ⭐ Future Improvements
+
+* Add webcam-based real-time emotion detection
+* Increase dataset size
+* Add data augmentation
+* Deploy using FastAPI or Streamlit
+
+---
+
+⭐ If you like this project, give it a star on GitHub!
