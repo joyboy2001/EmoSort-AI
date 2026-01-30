@@ -1,0 +1,20 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+venv/
+.env/
+
+# Model files
+*.h5
+*.keras
+
+# Input & output folders
+input_images/
+sorted_images/
+
+# OS files
+.DS_Store
+Thumbs.db
