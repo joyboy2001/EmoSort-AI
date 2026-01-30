@@ -1,34 +1,46 @@
-# EmoSort-AI 😄😡😐😢
+# 🧠 EmoSort-AI 😄😡😐😢  
+### Emotion-Based Image Segregation using Deep Learning
 
-An end-to-end **Emotion Classification System** using a **Convolutional Neural Network (CNN)** that detects human emotions from facial images. This project covers the complete ML lifecycle — **data preprocessing, model training, evaluation, and inference (prediction)**.
+EmoSort-AI is an end-to-end **deep learning application** that automatically detects facial emotions from images and **segregates them into emotion-specific folders**.
+
+Users can upload a **single folder containing mixed emotion images**, and EmoSort-AI analyzes each image using a trained CNN model and sorts them into individual folders such as **Angry, Happy, Neutral, and Sad**.
 
 ---
 
 ## 🚀 Project Overview
 
-EmoSort-AI is designed to classify facial emotions into four categories:
+Manual sorting of facial emotion images is time-consuming and error-prone.  
+EmoSort-AI solves this by providing an **automated, AI-driven pipeline** that:
 
-* **Angry** 😠
-* **Happy** 😄
-* **Neutral** 😐
-* **Sad** 😢
+- Analyzes facial expressions
+- Predicts emotions using a CNN
+- Automatically organizes images into emotion-wise directories
 
-The system is implemented using **TensorFlow/Keras** and follows a clean, modular structure suitable for real-world ML projects and interviews.
+This project demonstrates **real-world application of computer vision and deep learning**, going beyond simple prediction to full automation.
+
+---
+
+## 🎯 Supported Emotions
+
+- Angry 😠  
+- Happy 😄  
+- Neutral 😐  
+- Sad 😢  
 
 ---
 
 ## 🧠 Model Architecture
 
-The CNN architecture includes:
+The emotion classifier is built using a **Convolutional Neural Network (CNN)** with the following components:
 
-* Convolution + ReLU layers
-* MaxPooling layers
-* Flatten layer
-* Fully connected Dense layers
-* Softmax output layer (4 classes)
+- Convolutional layers with ReLU activation  
+- MaxPooling layers  
+- Flatten layer  
+- Fully connected Dense layers  
+- Softmax output layer  
 
-**Input:** 48×48 grayscale facial images
-**Output:** Emotion class probabilities
+**Input Size:** 48 × 48 facial images  
+**Output:** Probability scores for each emotion class  
 
 ---
 
@@ -37,25 +49,26 @@ The CNN architecture includes:
 ```
 EmoSort-AI/
 │
-├── data/
+├── data/                     # Training dataset (emotion-wise folders)
 │   ├── Angry/
 │   ├── Happy/
 │   ├── Neutral/
 │   └── Sad/
 │
+├── input_images/             # User uploads mixed emotion images here
+│
+├── sorted_images/            # AI-generated emotion-wise output folders
+│
 ├── src/
-│   ├── preprocess.py   # Data loading & preprocessing
-│   ├── model.py        # CNN model definition
-│   ├── train.py        # Training pipeline
-│   └── predict.py      # Inference / prediction script
+│   ├── preprocess.py         # Image preprocessing & loading
+│   ├── model.py              # CNN model definition
+│   ├── train.py              # Model training pipeline
+│   └── emosort_folder.py     # Folder-based emotion segregation logic
 │
-├── notebooks/
-│   └── training.ipynb  # Experimentation notebook
-│
-├── emosort_model.h5    # Trained model
-├── requirements.txt   # Dependencies
+├── emosort_model.h5          # Trained CNN model
+├── requirements.txt
+├── .gitignore
 └── README.md
-```
 
 ---
 
@@ -63,16 +76,18 @@ EmoSort-AI/
 
 ### 1️⃣ Clone the repository
 
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/joyboy2001/EmoSort-AI.git
 cd EmoSort-AI
-```
 
 ### 2️⃣ Install dependencies
 
-```bash
 pip install -r requirements.txt
-```
 
 > **Python version:** 3.10+ recommended
 
@@ -84,8 +99,6 @@ Run the training pipeline:
 
 ```bash
 python src/train.py
-```
-
 This will:
 
 * Load images from `data/`
@@ -94,59 +107,90 @@ This will:
 * Save the trained model as `emosort_model.h5`
 
 ---
+📂 Emotion-Based Folder Segregation (Main Feature)
 
-## 🔮 Running Predictions (Inference)
+Step 1️⃣ Add Mixed Images
 
-Use the trained model to predict emotion from a new image:
+Place any number of facial images (with mixed emotions) into:
+input_images/
+Example:
+input_images/
+├── img1.jpg
+├── img2.png
+├── img3.jpeg
 
-```bash
-python src/predict.py data/Happy/HAPPY.png
-```
+⸻
 
-### ✅ Sample Output
+Step 2️⃣ Run EmoSort-AI
+python src/emosort_folder.py
 
-```
-Loading model...
-Predicted emotion: Happy
-```
+⸻
 
----
+Step 3️⃣ Output
 
-## 📊 Results
+After execution, EmoSort-AI automatically creates:
+sorted_images/
+├── Angry/
+├── Happy/
+├── Neutral/
+└── Sad/
+Each image is:
+	•	Analyzed by the CNN model
+	•	Classified based on emotion
+	•	Copied into the appropriate emotion folder
 
-* Successfully trained CNN model
-* End-to-end pipeline from raw images → prediction
-* Modular, reusable codebase
+🖼 Sample Output
+✔ img1.jpg → Happy (0.72)
+✔ img2.png → Sad (0.65)
+✔ img3.jpeg → Angry (0.81)
 
-> Note: Accuracy can be improved further using data augmentation and larger datasets.
+🎉 EmoSort-AI finished sorting images successfully!
 
----
+📊 Key Results
+	•	Fully automated emotion-based image segregation
+	•	Clean, modular ML pipeline
+	•	Practical use of CNNs in real-world automation
+	•	Easily extendable to web and API-based applications
 
-## 🧩 Key ML Concepts Demonstrated
+⸻
 
-* Image preprocessing
-* CNN architecture design
-* Model training & evaluation
-* Saving/loading trained models
-* Real-world inference pipeline
+🛠 Tech Stack
+	•	Python
+	•	TensorFlow / Keras
+	•	NumPy
+	•	OpenCV / PIL
+	•	Git & GitHub
 
----
+⸻
 
-## 👨‍💻 Author
+🧩 Concepts Demonstrated
+	•	Image preprocessing
+	•	Convolutional Neural Networks (CNN)
+	•	Model training & inference
+	•	Batch prediction
+	•	File system automation using AI
+	•	End-to-end ML pipeline design
 
-**Sudeep J**
+⸻
+
+🔮 Future Enhancements
+	•	Face detection before emotion classification
+	•	Confidence threshold & “Uncertain” emotion category
+	•	Web application using Flask / FastAPI / Streamlit
+	•	REST API for emotion-based image sorting
+	•	Improved accuracy with larger datasets
+
+⸻
+
+👨‍💻 Author
+
+Sudeep J
 Final Year CSE (AI & ML)
-GitHub: [https://github.com/joyboy2001](https://github.com/joyboy2001)
+GitHub: https://github.com/joyboy2001
 
----
+⸻
 
-## ⭐ Future Improvements
+⭐ Support
 
-* Add webcam-based real-time emotion detection
-* Increase dataset size
-* Add data augmentation
-* Deploy using FastAPI or Streamlit
+If you found this project useful, consider giving it a ⭐ on GitHub!
 
----
-
-⭐ If you like this project, give it a star on GitHub!
